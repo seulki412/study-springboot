@@ -1,0 +1,5 @@
+package com.koreait.core.dto;
+
+public class MemberDTO {
+
+}

@@ -1,0 +1,5 @@
+package com.koreait.core.controller;
+
+public class HelloController {
+
+}
