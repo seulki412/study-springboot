@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<html>
 <head>
 <meta charset="utf-8">
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/bootstrap.min.css" 
+		th:href="@{/css/bootstrap.min.css}"	rel="stylesheet">
 </head>
 <body>
 	<div class="container" style="max-width: 600px">
@@ -12,7 +12,7 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<button class="btn btn-primary float-end" onclick="location.href='addForm.html'" type="button">
+				<button class="btn btn-primary float-end" onclick="location.href='addForm.html'" th:onclick="|location.href='@{/basic/items/add}'|" type="button">
 					상품 등록
 				</button>
 			</div>
@@ -30,8 +30,10 @@
 				</thead>
 				<tbody>
 					<tr th:each="item : ${items}">
-						<td th:text=${item.id}><a href="item.html">회원id</a></td>
-						<td th:text=${item.itemName}><a href="item.html">상품명</a></td>
+						<!-- /basic/items/아이템의 ID -->
+						<td><a href="item.html" th:href="@{/basic/items/{itemId}(itemId=${item.id})}" th:text="${item.id}">1</a></td>
+						<!-- /basic/items/아이템의 ID -->
+						<td ><a href="item.html" th:href="@{|/basic/items/${item.id}|}" th:text=${item.itemName}>상품명</a></td>
 						<td th:text=${item.price}>상품가격</td>
 						<td th:text=${item.quantity}></td>
 					</tr>
