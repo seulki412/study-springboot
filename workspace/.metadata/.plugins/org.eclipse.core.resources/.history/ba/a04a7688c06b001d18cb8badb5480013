@@ -1,0 +1,5 @@
+package com.example.item.domain.item;
+
+public class Item {
+
+}

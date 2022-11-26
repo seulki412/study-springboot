@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>이름</th>
+				</tr>	
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+package com.koreait.core2.repository;
+
+import java.util.List;
+
+
+import javax.persistence.EntityManager;
+
+import com.koreait.core2.member.Member;
+
+public class JpaMemberRepository implements MemberRepository{
+
+	// JPA는 EntityManager로 모든지 동작한다.
+	private final EntityManager em;
+	public JpaMemberRepository(EntityManager em) {
+		this.em = em;
+	}
+	
+	@Override
+	public Member save(Member member) {
+		em.persist(member);
+		return member;
+	}
+
+	@Override
+	public List<Member> fianAll() {
+		return em.createQuery("select m from Member m", Member.class).getResultList();
+	}
+
+}

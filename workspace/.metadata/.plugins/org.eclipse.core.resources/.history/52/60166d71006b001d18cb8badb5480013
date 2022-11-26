@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>LocalDateTime</h1>
+	<ul>
+		<li> default = <span th:text="${localDateTime}"></span></li>
+	</ul>
+</body>
+</html>

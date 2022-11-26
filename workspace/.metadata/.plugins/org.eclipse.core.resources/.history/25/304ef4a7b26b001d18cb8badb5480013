@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ 	<script type="text/javascript">
+ 		let username = [[${user.username}]];
+ 		let age = [[${user.age}]];
+ 		
+ 		//객체
+//  		let user = [[${user}]];
+ 	</script>
+</body>
+</html>

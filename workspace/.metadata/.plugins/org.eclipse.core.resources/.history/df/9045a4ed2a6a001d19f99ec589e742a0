@@ -1,0 +1,28 @@
+package com.koreait.core2.repository;
+
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import com.koreait.core2.member.Member;
+
+public class JdbcMemberRepository implements MemberRepository{
+	
+	private final DataSource dataSource;
+	public JdbcMemberRepository(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
+	@Override
+	public Member save(Member member) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Member> fianAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

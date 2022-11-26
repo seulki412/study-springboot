@@ -1,0 +1,5 @@
+package com.koreait.thymeleaf.bean;
+
+public class HelloBean {
+
+}

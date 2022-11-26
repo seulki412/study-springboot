@@ -1,0 +1,31 @@
+package com.koreait.test1.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.koreait.test1.service.MemberService;
+
+@Controller
+public class MemberController {
+
+	// Controller가 Service를 의존한다라고 표현
+	// Service는 여러 Controller에서 가져다 쓸 수 있기 때문에
+	// Spring Container에 등록을 해야한다.
+//	MemberService mService = new MemberService();
+	
+	// 스프링스럽게 작업하기
+	// Service는 Spring Container에 하나만 생성 및 등록해서 같이 공유해서 쓸 수 있다.
+	
+	private final MemberService memberService;
+	
+	@Autowired
+	public MemberController(MemberService memberService) {
+		this.memberService = memberService;
+	}
+	
+	@GetMapping(value = "/members/new")
+	public String createForm() {
+		return "members/createMemberForm";
+	}
+}

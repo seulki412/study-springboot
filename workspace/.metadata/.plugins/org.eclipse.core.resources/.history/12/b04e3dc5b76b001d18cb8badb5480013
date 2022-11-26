@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>부분포함</h1>
+	
+	<h2>부분포함 insert</h2>
+	<div th:insert="~{template/fragment/footer :: copy}"></div>
+</body>
+</html>

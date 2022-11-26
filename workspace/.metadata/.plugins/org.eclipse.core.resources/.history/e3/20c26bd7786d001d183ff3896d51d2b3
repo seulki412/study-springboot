@@ -1,0 +1,5 @@
+package com.koreait.test1.controller;
+
+public class HomeController {
+
+}

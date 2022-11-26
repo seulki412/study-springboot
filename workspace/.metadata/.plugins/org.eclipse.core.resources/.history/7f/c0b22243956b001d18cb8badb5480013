@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<ul>
+		<li> 산술연산
+			<ul>
+				<li>10 + 2 = <span th:text="10 + 2"></span></li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>

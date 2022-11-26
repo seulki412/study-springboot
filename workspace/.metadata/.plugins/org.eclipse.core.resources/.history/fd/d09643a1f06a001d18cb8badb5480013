@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>text vs utext</h1>
+	<ul>
+		<li>th:text = <span th:text="${data}"></span></li>	
+		<li>th:utext = <span th:utext="${data}"></span></li>	
+	</ul>
+</body>
+</html>

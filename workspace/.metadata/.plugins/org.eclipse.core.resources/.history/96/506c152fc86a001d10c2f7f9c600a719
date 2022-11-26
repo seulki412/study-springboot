@@ -1,0 +1,5 @@
+package com.koreait.core2.controller.request;
+
+public class RequestParamController {
+
+}

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>리터럴</h1>
+	<ul>
+		<li>"hello world!" = <span th:text="hello world!"></span></li>
+	</ul>
+</body>
+</html>

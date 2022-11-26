@@ -1,0 +1,5 @@
+package com.koreait.core2.controller;
+
+public class MemberController {
+
+}

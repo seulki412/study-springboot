@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>속성 설정</h1>
+	<input type="text" name="mock" th:name="userA">
+	
+	<h1>속성 추가</h1>
+	- th:attrappend = <input type="text" class="text" th:attrappend="class='large'"></br>
+	- th:attrprepend = <input type="text" class="text" th:attrprepend="class='large'">
+</body>
+</html>

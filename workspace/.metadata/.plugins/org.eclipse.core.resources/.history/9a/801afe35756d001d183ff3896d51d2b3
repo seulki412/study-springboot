@@ -1,0 +1,23 @@
+package com.koreait.test1.service;
+
+import java.util.List;
+
+import com.koreait.test1.member.Member;
+import com.koreait.test1.repository.MemberRepository;
+import com.koreait.test1.repository.MemoryMemberRepository;
+
+public class MemberService {
+
+	MemberRepository memberrepository = new MemoryMemberRepository();
+	
+	
+	//회원가입
+	public int join(Member member) {
+		memberrepository.save(member);
+		return member.getId();
+	}
+	//전체회원 조회
+	public List<Member> findMembers(){
+		return memberrepository.findAll();
+	}
+}

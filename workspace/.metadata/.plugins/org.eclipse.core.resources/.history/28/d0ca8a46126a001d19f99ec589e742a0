@@ -1,0 +1,25 @@
+package com.koreait.core2.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.koreair.core2.service.MemberService;
+
+@Controller
+public class MemberController {
+
+	// Controller가 Service를 의존한다라고 표현
+	// Service는 여러 Controller에서 가져다 쓸 수 있기 때문에
+	// Spring Container에 등록을 해야한다. -> 매번 서비스 가져다 쓸때 객체생성해야하는 부분 줄여준다.
+//	MemberService mService = new MemberService();
+	
+	// 스프링스럽게 작업하기
+	// service는 Spring Container에 하나만 생성 및 등록해서 같이 공휴해서 쓸 수 있다.
+	 private final MemberService memberServive;
+	   
+	   @Autowired
+	   public MemberController(MemberService memberService) {
+	      this.memberServive = memberService;
+	   }
+
+}

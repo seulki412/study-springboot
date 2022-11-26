@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 자바스크립트 인라인 사용 전 -->
+ 	<script type="text/javascript">
+ 		let username = "[[${user.username}]]";
+ 		let age = [[${user.age}]];
+ 		
+ 		//객체
+ 		let user = [[${user}]];
+ 	</script>
+ <!-- 자바스크립트 인라인 사용 후 -->
+ 	<script th:inline="javascript">
+ 		let username2 = [[${user.username}]];
+ 		let age2 = [[${user.age}]];
+ 		
+ 		//객체
+ 		let user2 = [[${user}]];
+ 	</script>
+</body>
+</html>

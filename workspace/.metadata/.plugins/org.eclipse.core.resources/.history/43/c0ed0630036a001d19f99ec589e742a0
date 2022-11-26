@@ -1,0 +1,5 @@
+package com.koreair.core2.service;
+
+public class MemberService {
+
+}
