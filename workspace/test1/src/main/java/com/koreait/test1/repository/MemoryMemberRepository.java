@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.koreait.test1.member.Member;
 
-@Repository
+//@Repository
 public class MemoryMemberRepository implements MemberRepository{
 	
 	// 메모리 사용

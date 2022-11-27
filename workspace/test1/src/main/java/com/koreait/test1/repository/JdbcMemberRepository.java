@@ -9,12 +9,18 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.koreait.test1.member.Member;
 
+
+//@Repository
 public class JdbcMemberRepository implements MemberRepository{
 
 	private final DataSource dataSource;
 	
+	@Autowired
 	public JdbcMemberRepository(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
