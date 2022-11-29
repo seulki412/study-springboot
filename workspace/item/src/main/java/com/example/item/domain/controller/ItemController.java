@@ -1,7 +1,9 @@
 package com.example.item.domain.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -17,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.item.domain.item.DeliveryCode;
 import com.example.item.domain.item.Item;
 import com.example.item.domain.item.ItemRepository;
+import com.example.item.domain.item.ItemType;
 
 import lombok.RequiredArgsConstructor;
 
@@ -36,6 +40,35 @@ public class ItemController {
 //	public ItemController(ItemRepository itemRepository) {
 //		this.itemRepository = itemRepository;
 //	}
+	
+	@ModelAttribute("regions")
+	// Controller를 호출할 때 (어떤 메서드가 호출이 되던간에)
+	// model에 자동으로 해당 내용이 담기는게 보장된다.
+	public Map<String, String> regions(){
+		Map<String, String> regions = new LinkedHashMap<String, String>();
+		regions.put("SEOUL", "서울");
+		regions.put("BUSAN", "부산");
+		regions.put("JEJU", "제주");
+		return regions;
+}
+	
+	
+	@ModelAttribute("itemType")
+	public ItemType[] itemTypes() {
+		// enum에있는 값을 배열로 넘겨준다.
+		return ItemType.values();
+	}
+	
+	
+	@ModelAttribute("deliveryCodes")
+	public List<DeliveryCode> deliveryCodes(){
+		List<DeliveryCode> deliveryCodes = new ArrayList<DeliveryCode>();
+		deliveryCodes.add(new DeliveryCode("FAST", "빠른배송"));
+		deliveryCodes.add(new DeliveryCode("NORMAL", "일반배송"));
+		deliveryCodes.add(new DeliveryCode("SLOW", "느린배송"));
+		return deliveryCodes;
+	}
+	
 	
 	@GetMapping
 	public String items(Model model) {
@@ -55,7 +88,8 @@ public class ItemController {
 	}
 	
 	@GetMapping("/add")
-	public String add() {
+	public String add(Model model) {
+		model.addAttribute("item", new Item());  //빈객체
 		return "basic/addForm";
 	}
 	
@@ -124,7 +158,14 @@ public class ItemController {
 	 * */ 
 	@PostMapping("/add")
 	public String saveV6(Item item, RedirectAttributes redirectAttributes){
+		
+		System.out.println("item.open = " + item.getOpen());
+		System.out.println("item.regoins = " + item.getRegions());
+		System.out.println("item.itemtype = " + item.getItemType());
+		
 		Item savaItem = itemRepository.save(item);
+		
+		
 		redirectAttributes.addAttribute("itemId", savaItem.getId());
 		redirectAttributes.addAttribute("status", true);
 		
