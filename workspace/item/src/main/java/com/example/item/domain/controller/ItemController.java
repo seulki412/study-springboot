@@ -8,9 +8,13 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import org.apache.tomcat.jni.Thread;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -156,7 +160,7 @@ public class ItemController {
 	 * 	-> 나머지는 파라미터로 처리 : "status=true
 	 * 매핑되는 애들은 PathVaireable로 처리 / 매핑 안되는 애들은 파라미터로붙여줌
 	 * */ 
-	@PostMapping("/add")
+//	@PostMapping("/add")
 	public String saveV6(Item item, RedirectAttributes redirectAttributes){
 		
 		System.out.println("item.open = " + item.getOpen());
@@ -169,11 +173,101 @@ public class ItemController {
 		redirectAttributes.addAttribute("itemId", savaItem.getId());
 		redirectAttributes.addAttribute("status", true);
 		
+
+		return "redirect:/basic/items/{itemId}" ;
+	}
+	
+	
+	/*
+	 * BindingResult : 
+	 * - Item 객체에 값이 잘 담기지 않을 때 BindingResult객체에 값이 담긴다.
+	 * - 스프링이 제공하는 검증 오류를 보관하는 객체, 검증 오류가 발생하면 여기에 보관
+	 * - 주의) BindingResult는 검증할 대상 바로 다음에 와야한다. 순서가 중요!
+	 * - BindingResult는 Model에 자동으로 포함된다.
+	// 아이템객체에 값이 담기는 순간에 이슈가 생기면, 바인딩리절트 객체에 어떠한 값이 담기게 된다. -> 그러므로 바인딩 리절트는 대상 객체 뒤에 선언되어야 한다.
+	 * */
+//	@PostMapping("/add")
+	public String saveV7(Item item, BindingResult bindingResult,  RedirectAttributes redirectAttributes){
+
+		//StringUtils.hasText
+		// - 값이 있을 경우에는 true, 공백이나 null 들어올 경우에는 false를 반환하게 된다.
+		if(!StringUtils.hasText(item.getItemName())) {
+			// FieldError : field단위의 error를 처리하는 spring 제공해주는 객체
+			bindingResult.addError(new FieldError("item", "itemName", "상품 이름은 필수입니다."));
+		}
+		
+		if(item.getPrice() == null || item.getPrice() < 1000 || item.getPrice() > 1000000) {
+			bindingResult.addError(new FieldError("item", "price", "가격은 1,000이상 1,000,000 미만으로 입력가능합니다."));
+		}
+		
+		
+		if(item.getQuantity() == null || item.getQuantity() >= 10000) {
+			bindingResult.addError(new FieldError("item", "quantity", "수량은 10000개 미만으로 가능합니다."));
+		}
+		//검증에 실패하면 다시 입력 폼으로
+				if(bindingResult.hasErrors()) {
+					System.out.println("errors = " + bindingResult);
+					return "basic/addForm";
+				}
+		
+		
+		Item savaItem = itemRepository.save(item);
+		redirectAttributes.addAttribute("itemId", savaItem.getId());
+		redirectAttributes.addAttribute("status", true);
+		
+		
 		return "redirect:/basic/items/{itemId}" ;
 	}
 	
 	
 	
+	
+	@PostMapping("/add")
+	public String saveV8(Item item, BindingResult bindingResult,  RedirectAttributes redirectAttributes){
+
+		/*
+		 * FieldError param
+		 * - objectName : 오류가 발생한 객체이름
+		 * - field		: 오류 필드
+		 * - rejectedValue : 사용자가 입력한 값(거절된 값)
+		 * - bindingFailure : 타입오류와 같은 바인딩 실패인지를 구분
+		 * - codes 			: 메세지 코드
+		 * - arguments		: 메세지에서 사용하는 인자
+		 * - defualtMessage : 기본 오류 메세지
+		 * */
+		
+		if(!StringUtils.hasText(item.getItemName())) {
+			bindingResult.addError(new FieldError("item", "itemName", item.getItemName(), false,
+					new String[] {"required.item.itemName", "required.default"}, null, "default message"));
+		}
+		
+		if(item.getPrice() == null || item.getPrice() < 1000 || item.getPrice() > 1000000) {
+			bindingResult.addError(new FieldError("item", "price", item.getPrice(), false,
+					new String[] {"range.item.price"}, new Object[] {1000, 10000}, null));
+
+		}
+		
+		
+		if(item.getQuantity() == null || item.getQuantity() >= 10000) {
+			bindingResult.addError(new FieldError("item", "quantity", item.getQuantity(), false,
+					new String[] {"max.item.quantity"}, new Object[] {9999}, null));
+
+		}
+
+		if(bindingResult.hasErrors()) {
+					System.out.println("errors = " + bindingResult);
+					return "basic/addForm";
+				}
+				
+		
+		
+		Item savaItem = itemRepository.save(item);
+		redirectAttributes.addAttribute("itemId", savaItem.getId());
+		redirectAttributes.addAttribute("status", true);
+		
+		
+		return "redirect:/basic/items/{itemId}" ;
+	}
 	
 	
 	
