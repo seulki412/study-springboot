@@ -14,7 +14,7 @@ public class LogInterceptor implements HandlerInterceptor{
 		String requestURI = request.getRequestURI();
 		System.out.println("[interceptor] requestURI : " + requestURI);
 		
-		return true;  // false -> 진행X
+		return true;  // false -> 이후에 진행을 하지 않는다.
 	}
 	
 	@Override

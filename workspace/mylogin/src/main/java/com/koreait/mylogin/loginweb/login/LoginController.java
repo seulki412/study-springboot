@@ -75,8 +75,9 @@ public class LoginController {
 	}
 	
 	@PostMapping("/login") // 세션에 담아주기
-	public String loginv3(@ModelAttribute LoginForm form, Model model, RedirectAttributes redirectAttributes , HttpServletRequest request,
-			@RequestParam(defaultValue = "/")String redirectURL ) {
+	public String loginv3(@ModelAttribute LoginForm form, Model model, RedirectAttributes redirectAttributes ,
+			HttpServletRequest request, @RequestParam(defaultValue = "/")String redirectURL ) {
+										// 넘어온 파라미터 값이 없으면 "/" 여기로 이동하겠다.
 		Member loginMember = loginService.login(form.getLoginId(), form.getPassword());
 		
 		System.out.println(loginMember);

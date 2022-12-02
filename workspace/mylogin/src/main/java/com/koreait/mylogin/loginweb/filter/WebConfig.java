@@ -16,12 +16,12 @@ public class WebConfig implements WebMvcConfigurer{
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new LogInterceptor())
-				.order(1)
+		registry.addInterceptor(new LogInterceptor()) // LogInterceptor 등록
+				.order(1)	// 적용할 필터 순서 설정
 				.addPathPatterns("/**")
-				.excludePathPatterns("/error");
+				.excludePathPatterns("/error"); // 인터셉터에서 제외할 패턴
 		
-		registry.addInterceptor(new LoginCheckInterceptor())
+		registry.addInterceptor(new LoginCheckInterceptor()) //LoginCheckInterceptor 등록
 				.order(2)
 				.addPathPatterns("/**")
 				.excludePathPatterns("/", "/members/add", "/login", "/logout", "/css/**");
