@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;templates.item&apos; to &apos;templates.items&apos;&#x0D;&#x0A;- Original project: &apos;mylogin&apos;&#x0D;&#x0A;- Original element: &apos;mylogin/src/main/resources/templates.item&apos;&#x0D;&#x0A;- Renamed element: &apos;mylogin/src/main/resources/templates.items&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings&#x0D;&#x0A;- Rename subpackages of the package" description="Rename package &apos;templates.item&apos;" flags="589830" hierarchical="true" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/resources=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;templates.item" name="templates.items" qualified="false" references="true" stamp="1669858108777" textual="false" version="1.0"/>
+</session>

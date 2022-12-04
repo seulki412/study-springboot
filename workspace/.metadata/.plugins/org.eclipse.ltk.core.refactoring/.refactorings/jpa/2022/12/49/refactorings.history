@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;JpaMain2.java&apos; to &apos;jpa/src/main/java/com.koreait.jpa&apos;&#x0D;&#x0A;- Original project: &apos;jpa&apos;&#x0D;&#x0A;- Destination element: &apos;jpa/src/main/java/com.koreait.jpa&apos;&#x0D;&#x0A;- Original element: &apos;com.koreait.jpa.JpaMain2.java&apos;" description="Copy compilation unit" destination="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.koreait.jpa" element1="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.koreait.jpa{JpaMain2.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1669961678065" units="1" version="1.0"/>
+</session>

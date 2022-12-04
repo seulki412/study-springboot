@@ -1,0 +1,5 @@
+package com.koreait.jpa;
+
+public class Member {
+
+}

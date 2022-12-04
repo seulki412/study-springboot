@@ -1,0 +1,18 @@
+package com.example.item.enumeration;
+
+public class Main02 {
+
+	public static void main(String[] args) {
+
+		Season season = Season.SPRING;
+		
+		// name() : 열거 객체의 문자열 리턴
+		String name = season.name();
+		System.out.println(name);
+		System.out.println("-------------");
+		
+		int ordinal = season.ordinal();
+		System.out.println(ordinal);
+	}
+
+}

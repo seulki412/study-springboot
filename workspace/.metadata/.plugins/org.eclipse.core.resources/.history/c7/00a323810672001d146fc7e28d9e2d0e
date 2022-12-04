@@ -1,0 +1,28 @@
+package com.koreait.jpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Getter;
+import lombok.Setter;
+
+/*
+ * 객체와 테이블을 생성하고 매핑하기
+ * @Entity  : JPA가 관리할 객체
+ * @Id 		: 데이터베이스 PK와 매핑
+ * 
+ * create table Member(
+ * 	id		number primary key,
+ * 	name	varchar(200)
+ * );
+ */
+@Entity
+@Getter @Setter
+@Table(name = "MBR")
+public class Member {
+	
+	@Id
+	private Long id;
+	private String name;
+}

@@ -1,0 +1,5 @@
+package com.koreait.mylogin.loginweb.member;
+
+public class Member {
+
+}

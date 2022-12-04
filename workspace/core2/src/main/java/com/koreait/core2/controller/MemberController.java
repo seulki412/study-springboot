@@ -59,7 +59,6 @@ public class MemberController {
 	public String create(MemberFormDTO form) {
 		Member member = new Member();
 		member.setName(form.getName());
-		
 		memberService.join(member);
 		
 		//홈 화면으로 돌린다.

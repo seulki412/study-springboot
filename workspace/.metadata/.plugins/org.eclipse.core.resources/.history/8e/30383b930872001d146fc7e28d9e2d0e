@@ -1,0 +1,21 @@
+package com.koreait.jpa;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Getter @Setter
+public class Member2 {
+
+	public static void main(String[] args) {
+
+		private String id;
+		
+		@Column(name = "name", nullable = false)
+		private String username;
+	}
+
+}

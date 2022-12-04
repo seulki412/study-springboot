@@ -1,2 +1,11 @@
-server.port=9090
-spring.thymeleaf.cache=false
+	@PostMapping("/add")
+	public String saveV2(	@ModelAttribute("item")Item item){
+		//@ModelAttribute 가 해주는 역할
+//		Item item = new Item();
+//		item.setItemName(itemName);
+//		item.setPrice(price);
+//		item.setQuantity(quantiry);
+//		model.addAttribute("item", item);
+		itemRepository.save(item);
+		return "basic/item";
+	}
