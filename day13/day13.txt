@@ -1,0 +1,14 @@
+1. 프로젝션
+	- select절에 조회할 대상을 지정하는 것
+	- select m from Member m
+		-> Member 엔티티 전체 조회
+	- select m.team from Member m
+		-> Member와 관련된 team을 가지고 온다.
+	- select m.username, m.age from Member m
+		-> Member엔티티에 있는 username, age를 조회
+
+
+2. 페이징 처리
+	- setFirstResult(int startPoint)	: 조회 시작 위치(0부터 시작)
+	- setMaxResults(int maxResult)	: 조회할 데이터 수
+	- 몇 번 째부터 몇개 가지고 올래?
